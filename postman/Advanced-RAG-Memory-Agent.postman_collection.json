@@ -1,0 +1,14 @@
+{
+  "info": {
+    "name": "Advanced RAG Memory Agent",
+    "description": "FastAPI collection for health, ingestion, chat, and semantic memory endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key": "baseUrl", "value": "http://127.0.0.1:8000"}],
+  "item": [
+    {"name": "Health", "request": {"method": "GET", "url": "{{baseUrl}}/health"}},
+    {"name": "Ingest text", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"text\": \"FastAPI is a modern Python web framework for building APIs.\",\n  \"source\": \"sample-doc\"\n}"}, "url": "{{baseUrl}}/api/ingest"}},
+    {"name": "Chat", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"query\": \"What is FastAPI?\",\n  \"user_id\": \"usr_99\",\n  \"session_id\": \"session_001\"\n}"}, "url": "{{baseUrl}}/api/chat"}},
+    {"name": "Get user memories", "request": {"method": "GET", "url": "{{baseUrl}}/api/users/usr_99/memories"}}
+  ]
+}
